@@ -4,36 +4,37 @@ import { Doughnut } from 'react-chartjs-2';
 Chart.register(...registerables)
 
 const PieChart = ({graphData,labels}) => {
-  const generateRandomColors=(numColors)=>{
-    let colors=[];
-    for(let i=0;i<numColors;i++){
-      const color=`rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random() * 256)})`
-      colors.push(color)
-    }
-    return colors
-  }
   const chartData={
     labels : labels,
     datasets:[
       {
         data:graphData,
-        backgroundColor:['blue','yellow','green'],
+        backgroundColor:['#ffc070','#66bdff','#59deab','#e1b8ff'],
       }
     ]
   }
   const chartOptions = {
+    cutout: '50%',
+    circumference: 360,
     responsive: true,
     maintainAspectRatio: false, 
-    width: '100%',
-    height: 200, 
+    width: '75%',
+    height: 400, 
     plugins: {
       legend: {
+        labels: {
+          usePointStyle: true,
+          font: {
+            size: 10, 
+          },
+          boxWidth: 10, 
+        },
         position: 'right',
       },
     }
   };
   return (
-  <div className='d-flex flex-column'>
+  <div className='d-flex flex-column mb-1 h-100'>
     <Doughnut data={chartData} options={chartOptions}/>
     </div>
     

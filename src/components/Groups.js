@@ -138,7 +138,7 @@ const handleOnChange=(e)=>{
 
      </Row>
 
-     <Row className='mt-5 mb-5' style={{gap:'10px 0px'}}>
+     <Row className='mt-5 mb-5' style={{gap:'10px 0px',padding:'1rem'}}>
       {
         filteredGroups && filteredGroups.length > 0 ? (
           filteredGroups?.map((data,i)=>{

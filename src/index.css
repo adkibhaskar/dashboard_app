@@ -5,11 +5,8 @@
 }
 .group-graph-cards{
   padding: 1rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
   margin-top: 0.6rem;
-  transform: translateY(-50px);
+  transform: translateY(-100px);
   margin-bottom: 0.1rem;
 }
 .carousel-item-child{
@@ -17,6 +14,18 @@
   display: flex;
   flex-direction: column;
   gap:5px
+}
+.carousel-indicators {
+  display: none;
+}
+.custom-border-right{
+  border-right: 1px solid #D3D3D3;
+}
+.img-style{
+  translate:12px;
+}
+.row-styling{
+  padding: 1rem;
 }
 @media (max-width:540px){
   .group-graph-cards{
@@ -26,6 +35,11 @@
   }
   .carousel-item-child{
     width: 40%;
+  }
+}
+@media (max-width:360px){
+  .row-styling{
+    padding: 0px;
   }
 }
 

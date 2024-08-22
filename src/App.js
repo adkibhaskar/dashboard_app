@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
-    <div className='min-vh-100 min-vw-100'>
+    <div className='min-vh-100 min-vw-100 d-flex'>
+      <div style={{width:'20%'}}></div>
       <Routes>
       <Route path="/groups" element={<Groups/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
