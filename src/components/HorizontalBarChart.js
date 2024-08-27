@@ -10,7 +10,7 @@ const HorizontalBarChart = ({data,labels}) => {
           {
             label:'Performance (%)',
             data: data,
-            backgroundColor: 'skyblue',
+            backgroundColor: '#00a2ff',
             
           },
         ],
@@ -23,26 +23,22 @@ const HorizontalBarChart = ({data,labels}) => {
             beginAtZero: true,
             max: 100,
             ticks: {
+              stepSize:10,
               callback: (value) => `${value}%`,
               font:{
                 size:9
               },
             },
-            title: {
-              display: true,
-              text: 'Performance (%)',
-            },
           },
           y: {
+            grid:{
+              display:false,
+            },
             ticks:{
                 font: {
-                    size: 9, 
+                    size: 10, 
                     },
             },
-            title: {
-              display: true,
-              text: 'Groups',
-             },
           },
         },
         plugins:{

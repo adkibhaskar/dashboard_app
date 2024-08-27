@@ -3,13 +3,14 @@ import {Chart,registerables} from "chart.js";
 import { Doughnut } from 'react-chartjs-2';
 Chart.register(...registerables)
 
-const PieChart = ({graphData,labels}) => {
+const Doughnut1 = ({graphData,labels}) => {
   const chartData={
     labels : labels,
     datasets:[
       {
         data:graphData,
         backgroundColor:['#ffc070','#66bdff','#59deab','#e1b8ff'],
+        borderWidth:0
       }
     ]
   }
@@ -40,5 +41,100 @@ const PieChart = ({graphData,labels}) => {
     
   )
 }
-export default PieChart;
+export default Doughnut1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

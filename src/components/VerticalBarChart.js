@@ -10,7 +10,7 @@ const VerticalBarChart = ({graphData,graphLabels}) => {
         {
           label:"Number of Employees",
           data: graphData,
-          backgroundColor: 'skyblue',
+          backgroundColor: '#66efff',
           borderWidth: 0.5,
         },
     ],
@@ -36,7 +36,7 @@ const options = {
         display:true,
         text:"Number of Employees",
         font:{
-          size:8
+          size:9
       }
       },
     },
@@ -53,7 +53,7 @@ const options = {
         display:true,
         text:"Age Group",
         font:{
-          size:7
+          size:9
         }
         
       }

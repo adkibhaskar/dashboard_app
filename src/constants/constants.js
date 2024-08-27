@@ -34,7 +34,8 @@ export const data={
             groupId:5,
             groupName:'Morning Gym',
             groupStatus:"inactive",
-            usersId:[17,18,19]
+            usersId:[17,18,19],
+            createdAt:"01/01/24"
         }
 
     ]

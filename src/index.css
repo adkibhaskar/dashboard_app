@@ -5,9 +5,15 @@
 }
 .group-graph-cards{
   padding: 1rem;
-  margin-top: 0.6rem;
+  margin-top: 1rem;
   transform: translateY(-100px);
-  margin-bottom: 0.1rem;
+  margin-bottom:-80px;
+}
+.group-graph-cards1{
+  padding: 1rem;
+  margin-top: 1rem;
+  transform: translateY(-100px);
+  margin-bottom:-115px;
 }
 .carousel-item-child{
   width:50%;

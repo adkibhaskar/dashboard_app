@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import { Container,Row,Col,Card,Button,Carousel,Image } from 'react-bootstrap';
-import PieChart from "./PieChart";
+import Doughnut1 from "./Doughnut1"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaChevronLeft,FaChevronRight  } from "react-icons/fa6";
 import {diseasesData} from "../constants/constants";
@@ -13,7 +13,8 @@ const Dashboard = () => {
   const[data,setData]=useState([]);
   const[graphData,setGraphData]=useState([]);
   const [employeesData,setEmployeesData]=useState([]);
-  const[employeesBarData,setEmployeesBarData]=useState([])
+  const[employeesBarData,setEmployeesBarData]=useState([]);
+  const[currentTime,setCurrentTime]=useState(new Date());
   const pieLabels=diseasesData.map((data)=>{return data.diseaseName})
   const barLables=employessInfoData.map((data)=>data.age)
   const nextHandler=()=>{
@@ -42,6 +43,13 @@ const Dashboard = () => {
    
   },[data])
   useEffect(()=>{
+    const timerId=setInterval(()=>{
+      setCurrentTime(new Date())
+    },800)
+    return ()=> clearInterval(timerId);
+
+  },[])
+  useEffect(()=>{
      let employessBarDataArr=[];
      if(employeesData !== undefined && employeesData !== null && employeesData.length > 0){
       employeesData.forEach((data)=>{
@@ -50,17 +58,46 @@ const Dashboard = () => {
       setEmployeesBarData(employessBarDataArr)
      }
   },[employeesData])
+  const formatDate = (date) => {
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; 
+    hours = hours.toString().padStart(2, '0'); 
+
+    
+    const daySuffix = (day) => {
+      if (day > 3 && day < 21) return 'th'; 
+      switch (day % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
+      }
+    };
+
+    return `${day}${daySuffix(day)} ${month} ${year} ${hours}:${minutes} ${ampm}`;
+  };
+  
   return (
     <Container>
       <Row style={{padding:'1rem',backgroundImage:'linear-gradient(to bottom,rgba(183,180,226,255) 1%,rgba(156,224,252,255) 90%)',width:'100%',height:'20%'}}>
-        <Col>
+        <Col className='d-flex justify-content-between'>
         <p className='fs-5 fw-semibold mb-4' style={{color:'#5f66df'}}>Dashboard</p>
+        <p style={{color:'#5f66df'}}>{formatDate(currentTime)}</p>
         </Col>
       </Row>
 
-      <Row className='group-graph-cards'>
+      <Row className='group-graph-cards1'>
 
-        <Col sm={12} md={4}>
+        <Col sm={12} md={4} style={{marginRight:'-15px'}}>
 
         <Card className='w-100 h-100 shadow-sm' style={{borderRadius:'15px'}}>
         <div className='w-100 h-100 p-2'>
@@ -90,13 +127,13 @@ const Dashboard = () => {
 
         </Col>
 
-        <Col sm={12} md={4}>
+        <Col sm={12} md={4} style={{marginRight:'-15px'}}>
 
         <Card className='p-2 w-100 h-100 shadow-sm' style={{borderRadius:'15px'}}>
         <p className='border-bottom mb-4' style={{fontSize:'15px',color:'#696969'}}>Overall Lifestyle Diseases</p>
         <div className='border-darkest border-2' ></div>
-        <PieChart graphData={graphData} labels={pieLabels}/>
-        <Button style={{backgroundColor:'#8de5fe',border:'none',borderRadius:'13px',color:'#187996',padding:'8px 30px',marginBottom:'5px',alignSelf:'end',fontSize:'12px',fontWeight:'bold',transform: 'translate(-2px, -19px)'}}>
+        <Doughnut1 graphData={graphData} labels={pieLabels}/>
+        <Button style={{backgroundColor:'#8de5fe',border:'none',borderRadius:'13px',color:'#187996',padding:'8px 30px',marginBottom:'5px',alignSelf:'end',fontSize:'12px',fontWeight:'bold',transform: 'translate(-2px, -18px)'}}>
                 View Details
               </Button>
         </Card>
